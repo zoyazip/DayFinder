@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     
     @IBAction func findBtnPressed(_ sender: Any) {
         var errorMessage: String = ""
-        let errorColor: UIColor = UIColor(hex: 0xF53221, alpha: 1)
         let whiteColor: UIColor = UIColor(hex: 0xffffff, alpha: 1)
         var isError: Bool = false
         
@@ -39,7 +38,7 @@ class ViewController: UIViewController {
         var dateComponents = DateComponents()
         
         guard let myDay = Int(dayUserInput.text ?? "0"), let myMonth = Int(monthUserInput.text ?? "0"), let myYear = Int(yearUserInput.text ?? "0") else {
-            #warning("HW warning for alert input")
+            
             return
         }
         
@@ -62,8 +61,7 @@ class ViewController: UIViewController {
         
         
         if isError{
-            resultUserInput.textColor = errorColor
-            resultUserInput.text = errorMessage
+            basicAlert(title: "Oops.. something went wrong:", message: errorMessage)
             clearInputs()
         }
         else{
@@ -99,6 +97,17 @@ class ViewController: UIViewController {
         findBtn.setTitle("Find", for: .normal)
     }
     
+/* Alert pop-up */
+    
+    func basicAlert(title: String?, message: String?){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            
+            self.present(alert, animated: true)
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if let destination = segue.destination as? InfoViewController {
@@ -112,6 +121,7 @@ class ViewController: UIViewController {
         }
     
 }
+/* Snippet for HEX colors */
 
     extension UIColor {
         convenience init(hex: UInt, alpha: CGFloat = 1.0) {

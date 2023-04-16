@@ -13,5 +13,5 @@ struct AppInfo{
     let creationDate: String = "14.04.2023"
     let appVersion: String = "1.0.0"
     let iosComp: String = "16.2"
-    let description: String = "Description: This app was created during Accenture iOS BootCamp by Denis Chernov. Main functionality of this app is to tell user the day of the week by his promt."
+    let description: String = "Description: This app was created during Accenture iOS BootCamp by Denis Chernov as well as design was created by me. Main functionality of this app is to tell user the day of the week by his promt."
 }
